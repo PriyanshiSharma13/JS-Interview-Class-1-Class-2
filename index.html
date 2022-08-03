@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Interview Class 1 & Class 2</title>
+    <style>
+        body{
+            background-color: #F9F9F9;
+        }
+        h1{
+            color: darkred;
+            text-decoration: underline;
+        }
+        h3{
+            color: darkblue;
+        }
+        p{
+            font-size: 18px;
+        }
+        h1, h3, p{
+            font-style: italic;
+        }
+        pre{
+            font-size: 16px;
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Interview Class Day1~</h1>
+    <h3> Q1. Difference between “ == “ and “ === “ operators.</h3>
+    <p>Ans- "==" operator is a comparison operator that checks only the values of two variables. It returns the output in true or false.</p>
+    <p>"===" operator is a comparison operator that checks both the values as well as the datatype of two variables. It returns the output in true or false.</p>
+    <h3>Q2. What is the spread operator ?</h3>
+    <p>Ans- Spread Operators were first introduced in ES6 version. It is represented using (...) and it allows us to quickly copy all or part of an existing array or object into another array or object.</p>
+    <pre>
+        let arrOne = ["a","b","c"]
+        let arrTwo = [1,2,3]
+        console.log(...arrOne,...arrTwo);
+    </pre>
+    <p>Output: a b c 1 2 3</p>
+    <h3>Q3. What are the differences between var, let and const?</h3>
+    <p>Ans- // var,let and const are 3 keywords that are used to declare a variable in Javascript. var came in earlier version of ES whereas let and const came into effect from ES6 onwards
+
+         let-
+         1. let can be declared on one line and initialise on the next line or within the same line itself.
+         2. Two variables having same names are not possible in let.
+         3. We can reassign or update the values of the variable which have already been initialised.
+         4. let is block scoped.
+         5. let doesn't support hoisting.
+        
+         Const-
+         1. Constant or Const can be declared and initialise on the same line itself.
+         2. Two variables having same names are not possible in const.
+         3. We cannot reassign or update the values of the variable which have already been initialised.
+         4. Const is block scoped.
+         5. Const doesn't support hoisting.
+        
+         Var-
+         1. var can be declared on one line and initialise on the next line.
+         2. Two variables having same names are possible in var.
+         3. We can reassign or update the values of the variable which have already been initialised.
+         4. var is global scoped.
+         5. var supports hoisting.</p>
+    <h3>Q4. What is execution context ?</h3>
+    <p>Ans- The browser's JavaScript engine then creates a special environment to handle the transformation and execution of this JavaScript code. This environment is known as the Execution Context.
+
+         The Execution Context contains the code that's currently running, and everything that aids in its execution.
+        
+         During the Execution Context run-time, the specific code gets parsed by a parser, the variables and functions are stored in memory, executable byte-code gets generated, and the code gets executed.
+        
+         There are two kinds of Execution Context in JavaScript:
+        
+         1. Global Execution Context (GEC)
+         2. Function Execution Context (FEC)</p>
+    <h3>Q5. What is creation phase and execution phase?</h3>
+    <p>Ans- 1. Memory Allocation Phase or the Creation Phase- Here,the variable will not be initialised, intead it will take default value as undefined. Some Memory is allocated to the variable.
+            2. Code Execution Phase or the Thread of Execution- Here, the variable will be assigned with its true values i.e, undefined will be replaced with the true values.</p>
+    <h3>Q6. What are closures? Give an example of closure.</h3>
+    <p>Ans- A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment). In other words, a closure gives you access to an outer function's scope from an inner function. In JavaScript, closures are created every time a function is created, at function creation time.</p>
+    <pre>
+        
+        function outerFunction() {
+            let a = 5;
+
+            function innerFunction(){
+                console.log(a);
+            }
+            innerFunction();
+            }
+        outerFunction();
+    </pre>
+    <p>Output: 5</p><hr>
+    <h1>JavaScript Interview Class Day2~</h1>
+    <h3>Q1. What is meant by first class functions</h3>
+    <p>Ans- A function can be passed as argument/values into another function or can be returned from the function itself.This dual property of the functions make them call as first class function.They are aslo called as "first class citizens".</p>
+    <pre>function add(a, b) {
+        return a + b;
+    }
+    
+    let sum = add;
+    
+    function average(a, b, fn) {
+        return fn(a, b) / 2;
+    }
+    
+    let result = average(10, 20, sum);
+    
+    console.log(result);//15</pre>
+    <h3>Q2. Explain call(), apply() and, bind() methods. Give an example of call(), apply(), bind()</h3>
+    <p>Ans- The call() method invokes a function with a specified context. In other words, you can tie a function into an object as if it belonged to the object.</p>
+    <pre>
+            var obj = { num: 2 };
+            function add(a){
+                return this.num + a;
+            }
+    </pre>
+    <p>The apply() method does the exact same as call(). The difference is that call() accepts an argument list, but apply() accepts an array of arguments.</p>
+    <pre>var obj = { num: 2 };
+
+        function add(a, b){
+          return this.num + a + b;
+        }
+        
+        console.log(add.apply(obj, [3, 5]));</pre>
+    <p>Instead of executing a function immediately, bind() returns a function that can be executed later on.</p>
+    <pre>var obj = { num: 2 };
+
+        function add(a, b){
+          return this.num + a + b;
+        }
+        
+        const func = add.bind(obj, 3, 5);
+        func(); // Returns 10</pre>
+    <h3>Q3. What are objects in javascript?</h3>
+    <p>Ans- Objects are non-primitive datatypes and are used to store multiple data  in the form of key value pairs.</p>
+    <p>Everything in Javascript is an object</p>
+    <pre>let user = {
+        name : "Shubham",
+        age : 23,
+        salary : 50000,
+        city : "Ahmedabad"
+        }
+        console.log(user);</pre>
+    <h3>Q4. What are function constructors?</h3>
+    <p>Ans- Function constructor is kind of regular function to create multiple objects at a time. When creating function constructor, it is good practice to keep the first letter of the name, capital.</p>
+    <p>"new" keyword is mandatory to be used with function constructor.</p>
+    <pre>function Person(name, salary){
+        this.name = name,
+        this.salary = salary
+        }
+        const person1 = new Person('Baba', 8000AED);
+        console.log(person1.name);</pre>
+    <h3>Q5. Explain prototypes</h3>
+    <p>Ans - Prototypes are the mechanism by which JavaScript objects inherit features from one another.</p>
+    <pre>function Person(name, age){
+        this.name = name;
+        this.age=age;
+        this.salary = 100000;
+        }
+        let person1 = new Person("Anwar",23);
+        let person2 = new Person("Shanth",45);
+        console.log(person1);
+        console.log(person2);
+        // in case, if you want to add other properties by using function constructor.
+        person1.salary = 50000;
+        console.log(person1);
+        // in case when you want to add properties inside the function constructor.
+        Person.prototype.Nationality = "India";
+        person1.Nationality = "American";
+        console.log(person1.Nationality);</pre>
+    <h3>Q6. What is prototype chaining ?</h3>
+    <p>Ans- Every object in JavaScript has a built-in property, which is called its prototype. The prototype is itself an object, so the prototype will have its own prototype, making what's called a prototype chain. The chain ends when we reach a prototype that has null for its own prototype.</p>
+    <h3>Q7. Give an example of inheritance using function constructor</h3>
+    <p>Ans-</p>
+    <pre>function Animal(name, color){
+        this.name = name;
+        this.color = color;
+    }
+    function AnimalDescription(name, color, age, sound){
+        Animal.call (this.name, this.color);
+        this.age = age;
+        this.sound = sound;
+    }
+    let Animal1 = new AnimalDescription('Bruno', 'Dark', 2, 'Barks')
+    // console.log(Animal.prototype);
+    console.log(Animal1);</pre>
+    <h3>Q8. What are callbacks?</h3>
+    <p>Ans- CALL BACK: function which is passed as argument to another function.</p>
+    <pre>function output(callback){
+        console.log("out");
+        callback()
+    };
+    function input(){
+        console.log("in")
+    };
+    output(input);</pre>
+    <p>The need of callbacks- The callbacks are needed because javascript is an event driven language. That means instead of waiting for a response javascript will keep executing while listening for other events. Let's take an example with the first function invoking an API call(simulated by setTimeout) and the next function which logs the message.</p>
+    <h3>Q9. What is the use of setTimeout ?</h3>
+    <p>Ans- setTimeout- The setTimeout() method is used to call a function or evaluate an expression 'after' a specified number of milliseconds. For example, let's log a message after 2 seconds using setTimeout method,</p>
+    <pre>setTimeout(function () {
+        console.log("Good Afternoon");
+        }, 2000);</pre>
+    <h3>Q10. What is an event loop and call stack ?</h3>
+    <p>Ans- Calling setTimeout triggers the execution of the web API, which adds the callback to the callback queue. The event loop then takes the callback from the queue and adds it to the stack as soon as it's empty.</p>
+    <p>Unlike the call stack, the callback queue follows the FIFO order (First In, First Out), meaning that the calls are processed in the same order they've been added to the queue.</p>
+    <p>The JavaScript event loop takes the first call in the callback queue and adds it to the call stack as soon as it's empty.</p>
+    <p>JavaScript code is being run in a run-to-completion manner, meaning that if the call stack is currently executing some code, the event loop is blocked and won't add any calls from the queue until the stack is empty again.</p>
+    <script src="index.js"></script>
+</body>
+</html>
